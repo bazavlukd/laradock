@@ -1056,6 +1056,20 @@ RUN if [ ${INSTALL_GNU_PARALLEL} = true ]; then \
   apt-get -y install parallel \
 ;fi
 
+###########################################################################
+# Install Ngrok2:
+###########################################################################
+
+USER root
+
+ARG INSTALL_NGROK=false
+
+RUN if [ ${INSTALL_NGROK} = true ]; then \
+  curl -s -O https://bin.equinox.io/c/4VmDzA7iaHb/ngrok-stable-linux-amd64.zip \
+    && unzip ngrok-stable-linux-amd64.zip \
+    && mv ngrok /usr/local/bin/ \
+    && rm -f ngrok-stable-linux-amd64.zip \
+;fi
 
 ###########################################################################
 # Check PHP version:
